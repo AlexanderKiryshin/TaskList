@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная страница</title>
+    @Styles.Render("~/content/Site.css")
+    @Scripts.Render("~/scripts/jquery-3.1.1.js")
+</head>
+<body>
+
+    <div id="main">
+            <aside class="layer1">   
+                    @Html.Action("Dates", "Task")
+                    @Html.Action("Marks", "Task")
+            </aside>
+        @RenderBody()
+    </div>
+</body>
+</html>

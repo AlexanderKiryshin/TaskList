@@ -1,0 +1,44 @@
+﻿@model TaskList.Models.Task
+@Styles.Render("~/Content/css")
+<head>
+    <title>Добавление новой задачи</title>
+</head>
+<body>
+@Html.Partial("_LoginPartial")
+@using (Html.BeginForm("AddTask", "Task"))
+{    
+
+    <div class="task">
+        название задачи:<br />
+      @Html.TextBoxFor(model => model.Name,new {style="width:450px"})
+    </div>
+    <div class="error">@Html.ValidationSummary(false)</div>
+    <div class="marks">
+        Метки:<br />
+       @Html.TextBoxFor(model => model.Marks,new {style="width:375px"})
+    </div>
+  
+    <div class="deadline">
+        Срок:<br />
+        @Html.TextBoxFor(model => model.Deadline,new {style="width:70px"})
+    </div>
+    <div class="confirmButton"><input id="newTask" type="submit" value="Создать" /> </div>  
+}
+@{
+    string parameter;
+    string view;
+    if (Request.Cookies["View"] != null)
+     {
+         view = Request.Cookies["View"]["ViewName"];
+         parameter = HttpUtility.HtmlDecode(Request.Cookies["View"]["Parameter"]);
+     }
+     else
+     {
+         view = "AllTasks";
+         parameter = null;
+     }
+     <div class="backLink">@Html.ActionLink("Назад", view, "Task",new {parameter},null)</div>
+}
+
+</body>
+

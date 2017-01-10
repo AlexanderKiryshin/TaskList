@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TaskList.Models.Task>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/css")
+
+
+ @Html.Partial("_LoginPartial")
+  <div class="layer2">   
+    @using (Html.BeginForm("NewTask", "Task"))
+{
+
+    <input id="newTask" style="margin-left:15px"  type="submit" value="Создать" />
+}
+    @foreach (var task in @Model)
+    {           
+    <div class="indent">
+        @if (task.TimeWhenTaskCompleted == null)
+        {
+            @Html.CheckBox("task" + @task.Id, false)
+            <span style="color:#e67400">@task.Name</span>
+        }
+        else
+        {
+            @Html.CheckBox("task" + @task.Id, true)
+            <span class="completedTask">@task.Name</span>
+        }
+
+
+        @Html.ActionLink("изменить", "EditTask", "Task", new { id = @task.Id }, null)
+        @Html.ActionLink("удалить", "DeleteTask", "Task", new { id = @task.Id }, null)
+        </div>    
+    }
+</div>
+<script>function deleteTask()
+{
+    // Создать URL для подключения
+    var url = "/scripts/getZipCode.php?city=" + escape(city) + "&state=" + escape(state);
+}
+</script>

@@ -1,0 +1,15 @@
+﻿
+    @Styles.Render("~/Content/css")
+    <style>
+       
+    </style>
+    @{
+        var id = (FormsIdentity)User.Identity;
+        var ticket = id.Ticket;
+    }
+        <div class="userLogin">
+            Добро пожаловать, @ticket.Name            
+            @Html.ActionLink("Выйти", "LogOff", "Authorization")
+        </div>       
+
+

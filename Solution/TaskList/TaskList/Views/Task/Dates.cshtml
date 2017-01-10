@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DateTime>
+    @{
+        string parameter = null;
+        string view;
+        if (Request.Cookies["View"] != null)
+        {
+            view = Request.Cookies["View"]["ViewName"];
+            if (Request.Cookies["View"]["Parameter"] != null)
+            {
+                parameter = HttpUtility.HtmlDecode(Request.Cookies["View"]["Parameter"]);
+            }
+        }
+        else
+        {
+            view = "AllTasks";
+        }
+        if ((parameter != null) || (view != "AllTasks"))
+        {
+            <br><a href="@Url.Action("AllTasks", "Task")">Все задачи</a><br />       
+        }
+        else
+        {
+            <br>
+            <b>Все задачи</b><br />
+        }
+    }
+    <br>
+    Срок:<br />
+    @{string dateStr;
+    foreach (var date in @Model)
+    { 
+        dateStr = date.ToString("D");
+        if (dateStr != parameter)
+        {
+            <br> @Html.ActionLink(dateStr, "SearchTasksByDate", "Task", new { parameter = dateStr }, null) <br />
+
+
+        }
+        else
+        {
+            <br>
+            <b>@dateStr</b><br />
+        }
+    }
+    if ((parameter != null) || (view == "AllTasks"))
+    {
+        <br>  @Html.ActionLink("без срока", "SearchTasksByNullDate", "Task")<br />
+    }
+    else
+    {
+        <br> <b>без срока</b> <br />
+    }
+    }
+    <br>

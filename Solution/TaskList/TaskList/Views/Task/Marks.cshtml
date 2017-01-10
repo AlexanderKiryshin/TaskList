@@ -1,0 +1,34 @@
+﻿@using TaskList.Global
+@model IEnumerable<string>
+@Styles.Render("~/Content/css")
+    <br>
+    Метки:<br />
+    @{
+        string parameter = null;
+        string view;
+
+        if (Request.Cookies["View"] != null)
+        {
+            view = Request.Cookies["View"]["ViewName"];
+            if (Request.Cookies["View"]["Parameter"] != null)
+            {
+                parameter = HttpUtility.HtmlDecode(Request.Cookies["View"]["Parameter"]);
+            }
+        }
+        else
+        {
+            view = "AllTasks";
+        }
+        foreach (var mark in @Model)
+        {
+            if (mark != parameter)
+            {
+                <br>@Html.ActionLink(mark, "SearchTasksByMark", "Task", new { parameter = mark }, null)<br />
+            }
+            else
+            {
+                <br>
+                <b>@mark</b><br />
+            }
+        }
+    }

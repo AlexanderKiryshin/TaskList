@@ -1,0 +1,173 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+    .task {
+            position: absolute;
+            top: 15px;
+            left: 40px;
+        }
+
+        .deadline {
+            position: absolute;
+            top: 70px;
+            left: 420px;
+        }
+
+        .marks {
+            position: absolute;
+            top: 70px;
+            left: 40px;          
+        }
+
+        .confirmButton {
+            position:absolute;
+            top: 120px;
+            left: 40px;
+        }
+
+        .backLink {
+            position: absolute;
+            top: 145px;
+            left: 40px;
+        }
+
+        .error {
+            position: absolute;
+            top: 20px;
+            left: 500px;
+        }
+/*Стили для отображения страниц
+    -------------------------------*/
+  .layer1 {
+            position: inherit;
+            float:left;
+            margin-top: 20px;
+            margin-left:0px;
+            line-height: 0.7;
+            width:200px;
+           /*overflow:auto;*/ 
+           height:100%;
+        }
+  .layer2 {
+            position: absolute;
+            left: 220px;
+            margin-top: 30px;
+            line-height: 0.85;
+            width:calc(100%-200px);
+            overflow:auto;
+            height:100%;
+            white-space:normal;
+        }
+   .userLogin {
+            position: fixed;
+            left: 85%;
+            border: none; /* Убираем границу */
+        }
+.page
+{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*Стили для отображения текста
+    --------------------------------*/
+.indent 
+{
+    padding: 0px 10px;
+}
+.completedTask 
+    {
+        text-decoration: line-through;
+        color: #555;
+    }
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+/* стили для форм добавления/изменения задач
+-----------------------------------------------------------*/
+
+.label-task {
+    width: 200px;
+    background: #fc0;
+    padding: 5px;
+    border: solid 1px black;
+    float: left;
+    position: relative;
+    top: 40px;
+}
+
+.textTask {
+    width: 600px;
+}
+
+.label-marks {
+    position: absolute;
+    top: 55px;
+    left: 15px;
+}
+
+.text-marks {
+    position: absolute;
+    top: 75px;
+    left: 15px;
+    font-size: 13px;
+    background-color: rgb(255,255,255);
+    color: #787474;
+    padding-left: 10px;
+    width: 400px;
+    height: 25px;
+    border-width: 1px;
+    border-style: solid;
+}
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}

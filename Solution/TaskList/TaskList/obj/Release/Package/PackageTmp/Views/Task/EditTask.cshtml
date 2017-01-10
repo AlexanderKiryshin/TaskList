@@ -1,0 +1,33 @@
+﻿@model TaskList.Models.Task
+<title>Изменение задачи</title>
+
+ @Html.Partial("_LoginPartial")
+@using (Html.BeginForm("ChangeTask", "Task", new  {id = Model.Id, name = Model.Name, deadline = Model.Deadline, marks = Model.Marks }))
+{
+    <div class="task">название задачи: <br/>     
+     @Html.TextBox("Name", Model.Name,new {style="width:450px"})</div>
+    <div class="error">@Html.ValidationSummary(false)</div>
+    <div class="marks">Метки:<br/>
+    @Html.TextBox("Marks", Model.Marks,new {style="width:375px"})</div>
+
+    <div class="deadline">Срок:<br/>
+    @Html.TextBox("Deadline", Model.Deadline.ToString(),new {style="width:70px"})</div>   
+
+    <input id="changeTask" type="submit" value="Создать" class="confirmButton" />   
+}
+@{
+    string parameter;
+    string view;
+    if (Request.Cookies["View"] != null)
+     {
+         view = Request.Cookies["View"]["ViewName"];
+         parameter = HttpUtility.HtmlDecode(Request.Cookies["View"]["Parameter"]);
+         
+     }
+     else
+     {
+         view = "AllTasks";
+         parameter = null;
+     }    
+}
+<div class="backLink">@Html.ActionLink("Назад", view, "Task",new {parameter},null)</div>

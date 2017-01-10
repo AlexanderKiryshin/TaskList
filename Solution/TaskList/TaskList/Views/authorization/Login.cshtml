@@ -1,0 +1,39 @@
+﻿@model TaskList.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Авторизация</title>
+    <style>
+    .identification {
+        position: absolute;
+        top: 30%;
+        left: 40%;
+    }
+    .identificationError {
+        position: absolute;
+        width: 300px;
+        top: 30%;
+        left: 105%;
+        color: red;
+    }
+</style>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Login", "Authorization"))
+        {
+            <div class="identification">
+                <div>Введите имя пользователя:</div>
+                <div style="float: left">@Html.EditorFor(model => model.UserLogin)
+                 <br/>
+                    <input  type="submit" value="Войти" /></div> 
+                <div class="identificationError">@Html.ValidationMessageFor(model => model.UserLogin)</div>             
+            </div>
+        }
+    </div>
+</body>
+</html>
